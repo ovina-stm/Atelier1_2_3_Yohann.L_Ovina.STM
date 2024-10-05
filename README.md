@@ -83,7 +83,7 @@ Dans le but de vérifier le bon fonctionnement de Gitlab et que nos installation
 `sudo gitlab-rake gitlab:env:info` : affiche des informations détaillées sur l'environnement et la configuration de GitLab.
 
 
-## VÉRIFICATION ET CONNEXION VIA L'INTERACE WEB :
+## VÉRIFICATION ET CONNEXION VIA L'INTERFACE WEB :
 
 Pour pouvoir se connecter à gitlab via un navigateur web il faut rentrer l'adresse IP de la machine virtuelle dans un navigateur de recherche de la machine hôte (google chrome par exemple).
 Cela nous redirigera vers le serveur Gitlab de la VM. Il faut ensuite entrer les informations de connexions : le nom d'utilisateur est **root** et le mot de passe est **l2D8LQ3VoHgFLK3IMNUlvME8PEArINM=** (on le trouve dans le fichier de la machine virtuelle qui est situé dans  /etc/gitlab/init_password_root, il faut donc utiliser la commande `nano /etc/gitlab/init_password_root` en ligne de commande dans le vm pour pouvoir ouvrir ce fichier).
