@@ -12,7 +12,7 @@ Ensuite nous avons ajouté cette ligne `config.vm.box = "generic/ubuntu2204"` :
 Cette ligne indique à Vagrant d'utiliser l'image (ou "box") nommée `"generic/ubuntu2204"`, qui correspond à une machine virtuelle Ubuntu 22.04. Cela permet d'installer et de configurer cette version d'Ubuntu comme environnement de développement.
 
 
-## CONFIGURATION DU SCRIPT pour conviguer la VM SUR VAGRANTFILE :
+## CONFIGURATION DU SCRIPT pour configurer la VM SUR VAGRANTFILE :
 
 `Vagrant.configure("2") do |config|` : Démarre la configuration de Vagrant avec la version 2 de l'API.
 
