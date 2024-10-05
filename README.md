@@ -33,17 +33,15 @@ Cette ligne indique à Vagrant d'utiliser l'image (ou "box") nommée `"generic/u
 
 ## CONFIGURATION DU SCRIPT POUR TÉLÉCHARGER ET CONFIGURER GITLAB :
 
-Ici, on ne fait que configurer avec vagrant un objet `config`qui utilise une image `ubuntu`
-
 `atelier1.vm.provision "shell", inline: <<-SHELL` : permet d’exécuter le script shell qui correspond aux lignes suivantes :
 
-`sudo loadkeys fr` : cette commande configure de la machine virtuelle en Azerty car elle est e Qwerty par défaut
+`sudo loadkeys fr` : cette commande configure de la machine virtuelle en Azerty car elle est en Qwerty par défaut.
 
 `sudo localectl set-keymap fr` : Cette commande  ajuste la configuration locale du clavier de manière à ce qu’elle soit défini en Français sur localectl. Cela permettra au clavier de rester en Français même après le redémarrage.
 
-`sudo apt-get update -y && sudo apt-get upgrade -y`: permet de mettre à jour la liste de paquets disponible (apt-get update) et met à jour tous les paquets installés vers leur dernières versions (apt-get upgrade). L’option -y permet une confirmation automatique ce qui signifie que la présence de l’utilisateur n’est pas requise pour finaliser l’installation.
+`sudo apt-get update -y && sudo apt-get upgrade -y`: permet de mettre à jour la liste de paquets disponible (apt-get update) et met à jour tous les paquets installés vers leur dernières versions (apt-get upgrade). L’option -y permet une confirmation automatique, ce qui signifie que la présence de l’utilisateur n’est pas requise pour finaliser l’installation.
 
-`curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash` : télécharge et exécute un script de configuration pour installer GitLab EE depuis les dépôts GitLab officiels. La partie sudo  bash est permet d’exécuter le script en bash avec les privilèges administrateurs.
+`curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ee/script.deb.sh | sudo bash` : télécharge et exécute un script de configuration pour installer GitLab EE depuis les dépôts GitLab officiels. La partie sudo bash permet d’exécuter le script en bash avec les privilèges administrateurs.
 
 `sudo apt-get install -y gitlab-ee` : permet d’installer gitlab-ee, sans demander de confirmation à l’utilisateur (grâce à l’option -y).
 
@@ -63,8 +61,8 @@ Après avoir effectué la modification de vagranfile avec les lignes de scripts 
 ## COMMANDES DU TERMINAL POUR GÉRER L'ÉTAT DE LA MACHINE :
  
  `vagrant up` : démarre la machine virtuelle.
- `vagrant  reload` : redémarre la machine en appliquand les nouvelles configurations du vagrantfile.
- `vagrant hault` : arrêtre la machine virtuelle.
+ `vagrant  reload` : redémarre la machine en appliquant les nouvelles configurations du vagrantfile.
+ `vagrant hault` : arrête la machine virtuelle.
  `vagrant destroy` : supprime la machine virtuelle.
 
 
@@ -74,14 +72,14 @@ Dans le but de vérifier le bon fonctionnement de Gitlab et que nos installation
 
 `sudo gitlab-ctl status` : affiche l'état des services GitLab sur une instance auto-hébergée.
 
-`sudo curl -I http://localhost:8081` : permet de vérifier si le serveur sur le port 8081 est actif et ses informations.
+`sudo curl -I http://localhost:8081` : permet de vérifier si le serveur sur le port 8081 est actif ainsi que ses informations.
 
 `sudo gitlab-rake gitlab:env:info` : affiche des informations détaillées sur l'environnement et la configuration de GitLab.
 
 
 ## VÉRIFICATION ET CONNEXION VIA L'INTERFACE WEB :
 
-Pour pouvoir se connecter à gitlab via un navigateur web il faut rentrer l'adresse IP de la machine virtuelle dans un navigateur de recherche de la machine hôte (google chrome par exemple).
+Pour pouvoir se connecter à gitlab via un navigateur web il faut rentrer l'adresse IP de la machine virtuelle dans la barre de recherche d'un navigateur de la machine hôte (google chrome par exemple).
 Cela nous redirigera vers le serveur Gitlab de la VM. Il faut ensuite entrer les informations de connexions : le nom d'utilisateur est **root** et le mot de passe est **l2D8LQ3VoHgFLK3IMNUlvME8PEArINM=** (on le trouve dans le fichier de la machine virtuelle qui est situé dans  /etc/gitlab/init_password_root, il faut donc utiliser la commande `nano /etc/gitlab/init_password_root` en ligne de commande dans le vm pour pouvoir ouvrir ce fichier).
 
 
