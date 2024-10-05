@@ -26,7 +26,7 @@ Cette ligne indique à Vagrant d'utiliser l'image (ou "box") nommée `"generic/u
 
 `vb.cpus = 2` : Assigne 2 cœurs de processeur à la machine virtuelle.
 
-`end` : pour mettre fermer le bloc de configuration de vagrant.
+`end` : pour fermer le bloc de configuration de vagrant.
 
 `atelier1.vm.network "public_network",` : configure la vm pour utiliser un réseau public.
 
@@ -53,11 +53,7 @@ Ici, on ne fait que configurer avec vagrant un objet `config`qui utilise une ima
 
 `sudo sed -i "/# registry_external_url/c\\registry_external_url 'http://localhost:8081'" /etc/gitlab/gitlab.rb` : Cette commande décommente et modifie la ligne dans le fichier de configuration pour activer le **GitLab Container Registry** et le configurer pour être accessible via `http://localhost:8081`. Le port **8081** est utilisé pour le registre de conteneurs.
 
-`sudo gitlab-rails runner "user = User.find_by(username: 'root'); user.password = 'MonGitlab_2024'; user.password_confirmation = 'MonGitlab_2024'; user.save!"` : change le mot de passe de l'utilisateur 'root' dans GitLab pour MonGitlab_2024.
-
 `sudo gitlab-ctl reconfigure` : Permet de reconfigurer GitLab et applique toutes les modifications apportées dans le fichier gitlab.rb et démarre ou redémarre les services de Gitlab nécessaires.
-
-`sudo rm /etc/gitlab/initial_root_password` : Supprime le fichier du mot de passe initial de GitLab pour des raisons de sécurité. (nous n'avons pas réussi à le faéire fonctionner, nous devons toujours utiliser le mot de passe initial qui est : ruH6OeTXndg/`l2D8LQ3VoHgFLK3IMNUlvME8PEArINM=`, on le trouve en allant dans le fichier  /etc/gitlab/init_password_root)
 
 `end` : Permet de fermer le bloc de configuration de vagrant.
 
