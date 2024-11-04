@@ -1,0 +1,32 @@
+image: docker:latest
+services:
+  - docker:dind
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - docker build -t gitlab.local:8081/myproject:latest .
+  only:
+    - main
+
+test:
+  stage: test
+  script:
+    - apt-get update && apt-get install -y tidy curl
+    - docker run --rm -v $CI_PROJECT_DIR:/app gitlab.local:8081/myproject:latest tidy -e /app/*.html || exit 1
+    - curl -f http://localhost # Assurez-vous que le serveur est en cours d'exécution
+  only:
+    - main
+
+deploy:
+  stage: deploy
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login gitlab.local:8081 -u "$DOCKER_USERNAME" --password-stdin
+    - docker push gitlab.local:8081/myproject:latest
+  only:
+    - main
